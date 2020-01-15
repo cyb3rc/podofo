@@ -93,7 +93,7 @@ void PdfStream::GetFilteredCopy( char** ppBuffer, pdf_long* lLen ) const
     {
         // Use std::auto_ptr so that pDecodeStream is deleted 
         // even in the case of an exception 
-        std::auto_ptr<PdfOutputStream> pDecodeStream( PdfFilterFactory::CreateDecodeStream( vecFilters, &stream, 
+        std::unique_ptr<PdfOutputStream> pDecodeStream( PdfFilterFactory::CreateDecodeStream( vecFilters, &stream, 
                                                                                             m_pParent ? 
                                                                                             &(m_pParent->GetDictionary()) : NULL  ) );
 
